@@ -4,13 +4,15 @@ terraform {
 }
 
 # Variables
-variable "name" {}
-variable "zone_name" {}
+variable "name" {
+}
 
+variable "zone_name" {
+}
 
 resource "google_dns_record_set" "mx" {
-  name         = "${var.name}"
-  managed_zone = "${var.zone_name}"
+  name         = var.name
+  managed_zone = var.zone_name
 
   type = "MX"
   ttl  = 300
@@ -23,3 +25,4 @@ resource "google_dns_record_set" "mx" {
     "10 alt4.aspmx.l.google.com.",
   ]
 }
+
